@@ -75,3 +75,20 @@ npm run dev
 ```env
 API_URL=http://localhost:3000/api/v1/itunes
 ```
+
+---
+
+## 📸 لقطات شاشة
+
+
+<img width="2533" height="1292" alt="image" src="https://github.com/user-attachments/assets/aceef40b-af8c-4ad9-bc52-3d91a4d3acb7" />
+
+---
+
+
+<img width="2555" height="1291" alt="image" src="https://github.com/user-attachments/assets/5b5803db-2392-463e-a635-3390ddc8fbc2" />
+
+--- 
+
+<img width="2537" height="1295" alt="image" src="https://github.com/user-attachments/assets/05b6cee7-ec90-46b0-acef-48fd50603eaf" />
+

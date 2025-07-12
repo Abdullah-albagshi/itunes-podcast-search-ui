@@ -12,7 +12,8 @@ export const EpisodeListRenderer = ({
 	query: string;
 }) => {
 	const allowedLayouts: Layout[] = ['scroll', 'grid', 'list', 'compact'];
-
+  if(episodes.length === 0) return null;
+  
 	return (
 		<List
 			title={'Suggested episodes for ' + query}

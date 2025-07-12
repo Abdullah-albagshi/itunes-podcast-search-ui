@@ -39,7 +39,8 @@ export function List<T>({
 			});
 		}
 	};
-
+  if(!items || items.length === 0) return null;
+  
 	return (
 		<div className='w-full mb-10'>
 			{/* Layout Switcher */}
@@ -103,7 +104,7 @@ export function List<T>({
 									'linear-gradient(to right, hsla(238, 27%, 12%, 100%), hsla(238, 27%, 12%, 0%))',
 							}}
 						></div>
-						{items.map((item, idx) => renderItem(item, idx, layout))}
+						{items?.map((item, idx) => renderItem(item, idx, layout))}
 						{/* right tint */}
 						<div
 							className='absolute top-0 right-0 z-10 w-5 bottom-5'
@@ -123,15 +124,15 @@ export function List<T>({
 				</div>
 			) : layout === 'grid' ? (
 				<div className='grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
-					{items.map((item, idx) => renderItem(item, idx, layout))}
+					{items?.map((item, idx) => renderItem(item, idx, layout))}
 				</div>
 			) : layout === 'list' ? (
 				<div className='flex flex-col gap-2'>
-					{items.map((item, idx) => renderItem(item, idx, layout))}
+					{items?.map((item, idx) => renderItem(item, idx, layout))}
 				</div>
 			) : layout === 'compact' ? (
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2'>
-					{items.map((item, idx) => renderItem(item, idx, layout))}
+					{items?.map((item, idx) => renderItem(item, idx, layout))}
 				</div>
 			) : null}
 		</div>

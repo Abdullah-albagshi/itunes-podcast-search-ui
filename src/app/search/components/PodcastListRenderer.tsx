@@ -14,7 +14,7 @@ export function PodcastListRenderer({
 	title,
 }: PodcastListRendererProps) {
 	const allowedLayouts: Layout[] = ['scroll', 'grid'];
-
+  if(podcasts.length === 0) return null;
 	return (
 		<List
 			items={podcasts}

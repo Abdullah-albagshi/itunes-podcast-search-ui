@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Frontend - iTunes Podcast Search UI
 
-## Getting Started
+## 🧪 التقنيات المستخدمة
 
-First, run the development server:
+- **Next.js 15** - App Router (مع دعم Server & Client Components)
+- **React 19**
+- **Tailwind CSS 4**
+- **TypeScript**
+- `fetch` API + `Suspense` + `loading.tsx`
+- **Custom debounce input**
+- **Custom scrollbar**
+- **error component**
+- **not found component**
+- مكونات جاهزة من:
+  - `@shadcn/react-dropdown-menu`
+  - `@shadcn/Skeleton`
+  - `lucide-react` (أيقونات)
+  - `clsx`, `tailwind-merge`, `class-variance-authority` (لإدارة التنسيقات)
+
+---
+
+## 🛠️ خطوات التنفيذ
+
+- أنشأت صفحة `/search` كواجهة رئيسية
+- استخدمت `searchParams` للحصول على قيمة البحث من الرابط
+- أنشأت مكون `SearchHeader` (Client Component) يحتوي على:
+  - `useState` + `useEffect` + `debounce`
+  - مزامنة ديناميكية مع URL عبر `router.replace()`
+- أنشأت مكون `List` عام، يدعم 4 تخطيطات:
+  - `scroll` (تمرير أفقي)
+  - `grid` (شبكة)
+  - `list` (صفوف)
+  - `compact`
+- أضفت مكونات `PodcastCard` و `EpisodeCard` تدعم الحجم الموحد عبر التخطيطات المختلفة
+- دعمت التصميم الكامل بتجاوب عالي باستخدام Tailwind فقط
+
+---
+
+## 📁 ملفات مهمة
+
+- `app/search/page.tsx` → الصفحة الأساسية لعرض البحث
+- `components/SearchHeader.tsx` → إدخال البحث مع debounce + router
+- `components/List.tsx` → قائمة مرنة تدعم أنواع متعددة من العرض
+- `components/PodcastCard.tsx` → كرت البودكاست مع دعم responsiveness و layout ثابت
+- `components/EpisodeCard.tsx` → كرت الحلقات بنفس الأسلوب
+- `components/Loading.tsx` → عرض أثناء تحميل البيانات باستخدام Suspense
+
+---
+
+## 📜 التعامل مع API
+
+- يقوم العميل (Frontend) بجلب البيانات مباشرة من API الخاص بالـ Backend.
+- يتم تمرير المعامل `q` في الرابط مثل: `/search?q=ثمانية`
+
+---
+
+## 💡 اقتراحات
+
+- عدم وجود تصميم مثلا من Figma يساعد في التطوير بشكل افضل
+
+---
+
+## 🚀 بدء المشروع
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+يفترض أن يكون الـ backend شغال على http://localhost:3000 (أو حسب بيئتك)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📂 ملف البيئة (.env)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+API_URL=http://localhost:3000/api/v1/itunes
+```

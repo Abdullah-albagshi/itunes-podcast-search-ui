@@ -6,13 +6,15 @@ import { PodcastCard } from '../../../components/PodcastCard';
 
 interface PodcastListRendererProps {
 	podcasts: Podcast[];
-	allowedLayouts: Layout[];
+	title?: string;
 }
 
 export function PodcastListRenderer({
 	podcasts,
-	allowedLayouts,
+	title,
 }: PodcastListRendererProps) {
+	const allowedLayouts: Layout[] = ['scroll', 'grid'];
+
 	return (
 		<List
 			items={podcasts}
@@ -24,6 +26,7 @@ export function PodcastListRenderer({
 				/>
 			)}
 			allowedLayouts={allowedLayouts}
+			title={title}
 		/>
 	);
 }

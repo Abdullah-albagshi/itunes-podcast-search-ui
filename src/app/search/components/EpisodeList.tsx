@@ -1,24 +1,17 @@
-'use server'
-import { List, Layout } from '../../../components/List';
-import { EpisodeCard } from '../../../components/EpisodeCard';
+'use server';
+import { fetchSuggested } from '@/app/service/api';
+import { EpisodeListRenderer } from './EpisodeListRenderer';
 
 interface EpisodeListProps {
-  query: string;
+	query: string;
+	title?: string;
 }
 
 export default async function EpisodeList({ query }: EpisodeListProps) {
-  if (!query) return null;
-  // const res = await fetch(`http://localhost:3000/search?term=${query}`, { cache: 'no-store' })
-  // const episodes = await res.json()
+	if (!query) return null;
+	const episodes = await fetchSuggested(query);
 
-  const allowedLayouts: Layout[] = ['scroll', 'grid', 'list', 'compact'];
+	if (episodes.length === 0) return null;
 
-  return (
-    <></>
-    // <List
-    //   items={[]}
-    //   renderItem={(episode, idx) => <EpisodeCard key={(episode as any).id || idx} episode={episode as any} />}
-    //   allowedLayouts={allowedLayouts}
-    // />
-  );
-} 
+	return <EpisodeListRenderer episodes={episodes} query={query} />;
+}

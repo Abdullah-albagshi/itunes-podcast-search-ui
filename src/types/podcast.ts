@@ -14,12 +14,15 @@ export type Podcast = {
 }
 
 export type Episode = {
+  artistViewUrl?: string;
   episodeUrl?: string;
   episodeContentType?: string;
   episodeFileExtension?: string;
   episodeGuid?: string;
   episodeLength?: number;
-  // Additional fields for episode filtering
   kind?: string;
   wrapperType?: string;
+  shortDescription?: string;
+  description?: string;
+  trackTimeMillis?: number;
 } & Podcast;

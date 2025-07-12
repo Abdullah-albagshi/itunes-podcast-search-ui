@@ -1,10 +1,15 @@
 'use client';
 import React from 'react';
+import { Skeleton } from './ui/skeleton';
 
 export function Loading() {
   return (
-    <div className="flex justify-center items-center py-8">
-      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+    <div className="flex items-center justify-center gap-4 py-8">
+      {
+        Array.from({ length: 8 }).map((_, index) => (
+          <Skeleton key={index} className="w-[250px] h-[250px] rounded-lg" />
+        ))
+      }
     </div>
   );
 } 
